@@ -1,0 +1,193 @@
+/* 初始化 */
+ul {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style-type: none;
+}
+a {
+    color: #51aded;
+    text-decoration: none !important;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+a:hover {
+    outline: none;
+    color: #51aded;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+
+/* 顶部模块 */
+.sakura-nav nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* 固定定位 */
+    z-index: 1;
+    /* 提高层级 */
+    min-width: 340px;
+    /* 最小宽度340px */
+    width: 100%;
+    /* 因为固定定位的元素脱标, 我们让nav盒子宽度100% */
+    background-color: rgba(22, 25, 29, 0.6);
+    /* 背景色 */
+
+    /* 注意点: 不给高度, 尽量让里面的元素来撑开盒子 */
+}
+.nav-content li {
+    position: relative;
+    float: left;
+}
+.nav-content a {
+    display: block;
+    padding: 7px 18px;
+    /* 撑开盒子 */
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+}
+.nav-content li:hover {
+    background-color: rgba(120, 120, 120, .6);
+}
+.nav-content li:hover .sakura-menu {
+    display: block !important;
+}
+
+/* 菜单 */
+.sakura-menu {
+    position: absolute;
+    left: 0;
+    display: none !important;
+    min-width: 110px;
+    background-color: rgba(93,93,93,.8);
+}
+.sakura-menu li {
+    float: none;
+}
+.sakura-menu li a {
+    display: block;
+    padding: 10px 15px;
+    white-space: nowrap;
+    letter-spacing: 0;
+    line-height: 20px;
+}
+
+/* 头部模块 */
+.sakura-header header {
+    position: relative;
+    height: 320px;
+    background: url(../images/site_head.png) no-repeat center;
+    background-size: cover;
+}
+.sakura-header header .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    /* 冷知识: 定位同时设置top:0; bottom:0; 可以占满父盒子上下, 宽度同理 */
+    width: 100%;
+    background-color: rgba(66, 64, 64, .2);
+}
+.sakura-title {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -50px;
+    width: 100%;
+    text-align: center;
+    text-shadow: 2px 2px 2px #666;
+}
+.sakura-title h2 {
+    display: inline-block;
+    color: #fff;
+    font-size: 40px;
+}
+.sakura-title span {
+    display: inline-block;
+    margin-bottom: 30px;
+    color: #fff;
+    font-size: 25px;
+    letter-spacing: 1px;
+    /* 调整字符之间的距离 */
+}
+
+/* 更改文本选中背景色 */
+::-webkit-selection{
+    background-color:rgba(0,149,255,.2)
+}
+::-moz-selection{
+    background-color:rgba(0,149,255,.2)
+}
+::selection{
+    background-color:rgba(0,149,255,.2)
+}
+
+@media screen and (max-width: 768px) {
+    .nav-content ul {
+        display: flex;
+    }
+    .nav-content li {
+        flex: 1;
+    }
+}
+@media screen and (max-width: 530px) {
+    .nav-content li a {
+        padding: 5px 8px;
+        font-size: 14px;
+    }
+    .sakura-header header {
+        height: 220px;
+    }
+    .sakura-title {
+        margin-top: -40px;
+    }
+    .sakura-title h2 {
+        margin-bottom: 5px;
+        font-size: 30px;
+    }
+    .sakura-title span {
+        font-size: 19px;
+    }
+    .sakura-menu {
+        min-width: 80px !important;
+    }
+    .sakura-menu a {
+        padding: 8px !important;
+    }
+}
+
+
+
+/* footer 底部模块 */
+footer {
+    padding: 40px 0 30px;
+    text-align: center;
+    background-color: rgba(35, 40, 45, 1);
+}
+footer p a {
+    color: rgba(255,255,255,.3);
+}
+footer p {
+    color: rgba(255,255,255,.3);
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    /* 文字 全部转换为大写 */
+}
+footer .booter-icp {
+    color: #de698c;
+}
+.booter-icp img {
+    width: 25px;
+}
+.footer-icon {
+    line-height: 25px;
+}
+.footer-icon a {
+    padding: 4px 14px;
+    color: rgba(255,255,255,.5);
+    font-size: 30px;
+}
+.footer-icon a:hover {
+    color: #51aded;
+}

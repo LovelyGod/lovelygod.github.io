@@ -1,0 +1,349 @@
+/* 
+    总结知识点:
+                1. 后面的 综合性写法 会覆盖掉 前面的 单独写法, 就算 后面的综合性写法 里 没有写前面单独写法的属性值, 也会覆盖掉前面的单独写法
+                2. 前面的单独写法, 如果权重比后面的综合性写法权重高, 就会把综合性写法里面的这一个属性覆盖掉, 而不是全部覆盖. 其他属性不受影响
+                3. 写网页之前 要先确定基本的公共样式, 例如body的样式, 还有初始化样式, 之后再去书写页面的代码
+                4. 确定基本的公共样式之后, 我们写页面要先划分好区域, 例如导航栏模块, 头部模块, 主体模块, 侧栏模块等, 不然容易写乱
+                5. 冷知识: 定位同时设置top:0; 和 bottom:0; 可以占满父盒子上下, 宽度同理
+                6. Bootstrap栅格系统小技巧: col-*-6 占用6份, col-*-offset-3 向右偏移3份, 就可以实现盒子水平居中啦
+                7. 注意BFC问题, html结构一定要划分好
+                8. 假如同一行上有一个 20px外边距并且宽度为100px的浮动盒子 和一个 宽度为100px没有浮动的盒子
+                   浮动盒子会压着没有浮动的盒子, 如果没有浮动的盒子想要不被浮动盒子压着, 则可以设置margin-left: 140px;
+                   为什么不是100却是140? 因为要加上浮动盒子的两个外边距 (或者给没有浮动的盒子添加overflow: hidden; 触发BFC)
+
+        什么是BFC?
+                - 常见的布局方案: 标准流(又称"普通流"), 浮动, 定位 (所有元素默认都是标准流)
+                - BFC属于标准流, 我们可以把BFC看成页面中的一块渲染区域, 他有着自己的渲染规则
+                - 简单来说, BFC可以看做是元素的一种属性, 当元素拥有BFC这个属性的时候, 这个元素就可以看做是隔离了的独立容器
+                - 独立容器里面的元素不会在布局上影响到这个容器外面的其他元素
+
+        怎么触发BFC (也就是如何为元素添加BFC这个属性) ?
+                1. 根元素 (<html>)
+                2. 浮动元素 (元素的 float 不是 none)
+                3. 绝对定位元素 (元素的 position 不为 absolute 或 fixed)
+                4. display 为 inline-block, table-cell, table-caption, table, table-row, table-row-group, table-header-group, table-footer-group, inline-table, flow-root, flex 或 inline-flex, grid 或 inline-grid
+                5. overflow 值不为 visible 的块元素
+                6. contain 值为 layout, content 或 paint 的元素
+                7. 多列容器 (元素的 column-count 或 column-width 不为 auto, 包括 column-count 为 1)
+
+
+    新学属性: 
+            text-transform: uppercase;
+            文本全部转换为大写
+
+            white-space: nowrap;
+            禁止文本换行
+
+            letter-spacing: 3px;
+            调整字与字之间的间隔
+
+            ovject-fit
+            指定元素的内容应该如何去适应指定容器的高度与宽度
+            一般用于 img 和 video 标签,一般可以对这些元素进行保留原始比例的剪切、缩放或者直接进行拉伸等
+*/
+
+/* body 样式 */
+body {
+    margin: 0;
+    /* 外边距 */
+    min-width: 340px;
+    /* 最小宽度340px */
+    color: #848484;
+    /* 字体颜色 */
+    font: normal 300 16px/1.8 -apple-system, BlinkMacSystemFont, opensans, Optima, "Microsoft Yahei", sans-serif;
+    /* 不倾斜 300细体 16px字体大小 1.8倍行高 设置字体 */
+    overflow-x: hidden;
+    /* X轴 溢出隐藏 */
+    background-color: #f5f5f5;
+    /* 背景色 */
+}
+
+/* 如果屏幕大于 768px, 就显示背景图片 */
+@media screen and (min-width: 768px) {
+    body {
+        /* background: url(https://cdn.jsdelivr.net/gh/xb2016/kratos-pjax@0.4.4/static/images/index_image.png) no-repeat fixed; */
+        /* 后面的 综合性写法 会覆盖掉 前面的 单独写法, 为了不覆盖 body 本身的背景颜色, 我们要分开写设置背景图片 */
+
+        background-image: url(../images/index_image.png);
+        /* 设置背景图片 */
+        background-repeat: no-repeat;
+        /* 背景图片不平铺 */
+        background-attachment: fixed;
+        /* 背景图片固定(不随着网页滚动) */
+
+        background-size: cover;
+        /* 缩放图片, 直到一边贴边 */
+    }
+}
+
+/* 主体内容模块 */
+.sakura-blog {
+    padding: 20px 0;
+}
+
+
+/* 文章 */
+article a {
+    color: #333;
+}
+.sakura-hentry {
+    margin-bottom: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    transition: all .6s ease;
+}
+.sakura-hentry:hover {
+    box-shadow: 0 8px 15px rgb(146 146 146 / 39%);
+}
+.hentry-img {
+    float: left;
+    margin: 20px;
+    width: 240px;
+    height: 145px;
+    overflow: hidden;
+}
+.hentry-img a {
+    display: block;
+}
+.hentry-img img {
+    padding: 2px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #f3f3f3;
+    object-fit: cover;
+    /* 新学属性: ovject-fit 属性指定元素的内容应该如何去适应指定容器的高度与宽度 */
+    /* cover 保持原有尺寸比例, 但部分内容可能被剪切 */
+}
+.post-inner {
+    margin-left: 255px;
+    padding: 21px 20px 0 3px;
+    height: 168px;
+    overflow: hidden;
+}
+.entry-header {
+    margin: 3px 0 6px;
+}
+.entry-header > a {
+    position: relative;
+    top: -3px;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 4px 6px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 14px;
+    background-color: #60b2ec;
+}
+/* 三角形 */
+.entry-header > a::after {
+    content: "";
+    position: absolute;
+    top: 7.5px;
+    right: -3px;
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid #60b2ec;
+}
+.entry-header h2 {
+    display: inline;
+    margin: 0;
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.entry-content p {
+    font-size: 15px;
+}
+
+.post-meta {
+    padding: 3px 20px;
+    font-size: 12px;
+    line-height: 27px;
+    border-top: 1px solid #f3f3f3;
+    clear: both;
+    overflow: hidden;
+}
+.post-meta span {
+    float: left;
+}
+.post-meta span a {
+    margin-right: 15px;
+}
+.yueduqw {
+    float: right !important;
+}
+.yueduqw a {
+    margin-right: 0 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* 第二次练习文章模块 */
+.saku {
+    margin-bottom: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    transition: all .6s ease;
+}
+.saku:hover {
+    box-shadow: 0 8px 15px rgb(146 146 146 / 39%);
+}
+/* img */
+.saku-img {
+    float: left;
+    margin: 20px;
+    width: 240px;
+    height: 145px;
+}
+.saku-img img {
+    padding: 2px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #f3f3f3;
+}
+/* 分类标签 */
+.infos {
+    margin-left: 255px;
+    height: 168px;
+    padding: 20px 20px 0 3px;
+    overflow: hidden;
+}
+.infos-header {
+    margin: 3px 0 6px;
+}
+.infos-header > a {
+    position: relative;
+    top: -3px;
+    display: inline-block;
+    /* 转换为行内块元素 */
+    margin-right: 5px;
+    padding: 4px 6px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 14px;
+    /* 调整行高, 要先转换为行内块元素才可以调整 */
+    background-color: #60b2ec;
+}
+/* 定位小三角 */
+.infos-header > a::after {
+    content: "";
+    position: absolute;
+    top: 7.5px;
+    right: -3px;
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-left: 4px solid #60b2ec;
+    border-bottom: 4px solid transparent;
+}
+.infos-header h2 {
+    display: inline;
+    margin: 0;
+    font-size: 21px;
+    font-weight: 400;
+}
+
+/* this */
+.this p {
+    font-size: 15px;
+}
+
+/* bottom-info */
+.btm-info {
+    padding: 3px 20px;
+    line-height: 27px;
+    clear: both;
+    overflow: hidden;
+    border-top: 1px solid #f3f3f3;
+}
+.btm-info a {
+    float: left;
+    margin-right: 15px;
+    font-size: 12px;
+}
+.ydqw {
+    float: right !important;
+}
+.ydqw {
+    margin-right: 0 !important;
+}
+
+
+
+/* 侧栏 */
+.widget {
+    margin-bottom: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+}
+.photo-background {
+    height: 120px;
+    background: url(https://cdn.jsdelivr.net/gh/cheng2924070927/PicGo/PicGo/img/masa.jpg) no-repeat center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.photo-wrapper {
+    width: 100%;
+    text-align: center;
+}
+.photo-wrapper img {
+    margin-top: -50px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 4px solid rgba(255,255,255,.4);
+}
+
+.textwidget {
+    margin: 10px 0 30px;
+    text-align: center;
+}
+.textwidget p {
+    margin: 0;
+    font-size: 16px;
+}
+.textwidget a {
+    color: #4c4c4c;
+    transition: color .3s;
+}
+.textwidget a:hover {
+    color: #60b2ec;
+}
+
+/* 响应式 */
+@media screen and (max-width: 768px) {
+    .hentry-img, .saku-img {
+        float: none;
+        margin: 0 0 15px;
+        padding: 0;
+        width: auto;
+        height: auto;
+        overflow: hidden;
+    }
+    .hentry-img img, .saku-img img {
+        padding: 0;
+        max-width: 100%;
+        width: 750px;
+        height: auto;
+        border: 0;
+    }
+    .post-inner, .infos {
+        margin-left: 0;
+        padding: 0 15px;
+        height: auto;
+    }
+}

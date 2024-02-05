@@ -1,11 +1,268 @@
 <!DOCTYPE html>
+<!-- 声明文档类型 (HTML:5) -->
 <html lang="zh-CN">
-  <head>
+<!-- html(文档结构) -->
+<!-- 声明当前文档为中文，方便其他国家浏览器翻译(zh-CN) -->
+<head>
+    <!-- 文档头部 -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-  </head>
-  <body>
-    <div>test</div>
-  </body>
+    <!-- 文档编码类型(UTF-8) -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 要求 当前网页 使用 IE浏览器最高版本 的 内核 来渲染 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <!-- 视口设置: 视口的宽度和设备一致, 默认的缩放比例和PC端一致, 用户不能自行缩放 -->
+    <!-- 上面这 3个meta标签 必须 放在最前面, 任何其他内容都 必须 跟随其后! -->
+    <title>Sakura's Blog</title>
+    <!-- 文档标题 -->
+    <!--[if lt IE 9]>
+      <script src="https://fastly.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://fastly.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xb2016/kratos-pjax@0.4.3/static/css/font-awesome.min.css">
+    <!-- 引入字体图标 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!-- 引入 Bootstrap 样式文件 -->
+    <link rel="stylesheet" href="css/common.css">
+    <!-- 引入公共样式 -->
+    <link rel="stylesheet" href="css/index.css">
+    <!-- 引入当前页面CSS -->
+</head>
+<body>
+  <div class="sakura-wrapper">
+    
+    <!-- 顶部导航栏模块 -->
+    <div class="sakura-nav">
+
+      <!-- 导航栏 -->
+      <nav>
+        <!-- Bootstrap container 容器 -->
+        <div class="container">
+          <!-- 导航栏 -->
+          <div class="nav-content">
+            <ul>
+              <li><a href="#"><i class="fa fa-home hidden-xs"></i> 首页</a></li>
+              <li>
+                <a><i class="fa fa-dashboard hidden-xs"></i> 功能</a>
+                <ul class="sakura-menu">
+                  <li><a href="#">注册</a></li>
+                  <li><a href="#">登录</a></li>
+                  <li><a href="#">状态监控</a></li>
+                </ul>
+              </li>
+              <li>
+                <a><i class="fa fa-cogs hidden-xs"></i> 工具</a>
+                <ul class="sakura-menu">
+                  <li><a href="#"><i class="fa fa-telegram"></i> 加入聊天</a></li>
+                  <li><a href="#">自己开的b站</a></li>
+                </ul>
+              </li>
+              <li><a href="#"><i class="fa fa-archive hidden-xs"></i> 归档</a></li>
+              <li><a href="#"><i class="fa fa-mars hidden-xs"></i> 后宫</a></li>
+              <li><a href="#"><i class="fa fa-pencil hidden-xs"></i> 留言</a></li>
+              <li><a href="#"><i class="fa fa-rocket hidden-xs"></i> 关于</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+
+    <!-- 头部模块 -->
+    <div class="sakura-header">
+
+      <!-- 头部 -->
+      <header>
+
+        <!-- 遮罩 -->
+        <div class="overlay"></div>
+
+        <!-- title -->
+        <div class="sakura-title">
+          <a href="#">
+            <h2>Sakura's Blog</h2>
+            <br>
+            <span>欲落的樱花等不到富士山的日落</span>
+          </a>
+        </div>
+
+      </header>
+      
+    </div>
+
+    <!-- 主体内容模块 -->
+    <div class="sakura-blog">
+
+      <!-- Bootstrap container容器 -->
+      <div class="container">
+
+        <!-- row行 -->
+        <div class="row">
+
+          <!-- 文章区域 -->
+          <main class="col-md-8">
+
+            <!-- 文章 -->
+            <article class="sakura-hentry">
+              <div class="hentry-content">
+                <!-- img -->
+                <div class="hentry-img">
+                  <a href="#"><img src="upload/thumb_2.jpg" alt="hentry"></a>
+                </div>
+                
+                <!-- content -->
+                <div class="post-inner">
+
+                  <!-- title -->
+                  <header class="entry-header">
+                    <a href="#" class="hidden-xs">创作集</a>
+                    <h2><a href="#">Hello，World!</a></h2>
+                  </header>
+
+                  <!-- info -->
+                  <div class="entry-content">
+                    <p>This is your first article. Edit or delete it and start writing!</p>
+                  </div>
+
+                </div>
+
+                <!-- post-meta -->
+                <div class="post-meta">
+                  <span>
+                    <a href="#"><i class="fa fa-calendar"></i> 2022年3月8日</a>
+                    <a href="#"><i class="fa fa-commenting-o"></i> 0条评论</a>
+                  </span>
+                  <span class="hidden-xs">
+                    <a href="#"><i class="fa fa-eye"></i> 47次阅读</a>
+                    <a href="#"><i class="fa fa-thumbs-o-up"></i> 5人点赞</a>
+                    <a href="#"><i class="fa fa-user"></i> Sakura</a>
+                  </span>
+                  <span class="yueduqw">
+                    <a href="#">阅读全文 <i class="fa fa-chevron-circle-right"></i></a>
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <article class="saku">
+              <div class="hentry-content">
+                <!-- img -->
+                <div class="saku-img">
+                  <a href="#"><img src="upload/thumb_2.jpg" alt=""></a>
+                </div>
+
+                <!-- info -->
+                <div class="infos">
+
+                  <!-- title -->
+                  <div class="infos-header">
+                    <a href="#" class="hidden-xs">分享镜</a>
+                    <h2><a href="#">Hello，World!</a></h2>
+                  </div>
+
+                  <!-- this -->
+                  <div class="this">
+                    <p>This is your first article. Edit or delete it and start writing!</p>
+                  </div>
+
+                </div>
+
+                <!-- bottom-info -->
+                <div class="btm-info">
+                  <a href="#"><i class="fa fa-calendar"></i> 2022年3月8日</a>
+                  <a href="#"><i class="fa fa-commenting-o"></i> 0条评论</a>
+                  <a href="#" class="hidden-xs"><i class="fa fa-thumbs-o-up"></i> 5人点赞</a>
+                  <a href="#" class="hidden-xs"><i class="fa fa-eye"></i> 47次阅读</a>
+                  <a href="#" class="hidden-xs"><i class="fa fa-user"></i> Sakura</a>
+                  <a href="#" class="ydqw">阅读全文 <i class="fa fa-chevron-circle-right"></i></a>
+                </div>
+              </div>
+            </article>
+
+            <article class="saku">
+              <div class="hentry-content">
+                <!-- img -->
+                <div class="saku-img">
+                  <a href="#"><img src="upload/thumb_2.jpg" alt=""></a>
+                </div>
+
+                <!-- info -->
+                <div class="infos">
+
+                  <!-- title -->
+                  <div class="infos-header">
+                    <a href="#" class="hidden-xs">日记本</a>
+                    <h2><a href="#">Hello，World!</a></h2>
+                  </div>
+
+                  <!-- this -->
+                  <div class="this">
+                    <p>This is your first article. Edit or delete it and start writing!</p>
+                  </div>
+
+                </div>
+
+                <!-- bottom-info -->
+                <div class="btm-info">
+                  <a href="#"><i class="fa fa-calendar"></i> 2022年3月8日</a>
+                  <a href="#"><i class="fa fa-commenting-o"></i> 0条评论</a>
+                  <a href="#" class="hidden-xs"><i class="fa fa-thumbs-o-up"></i> 5人点赞</a>
+                  <a href="#" class="hidden-xs"><i class="fa fa-eye"></i> 47次阅读</a>
+                  <a href="#" class="hidden-xs"><i class="fa fa-user"></i> Sakura</a>
+                  <a href="#" class="ydqw">阅读全文 <i class="fa fa-chevron-circle-right"></i></a>
+                </div>
+              </div>
+            </article>
+
+          </main>
+
+          <!-- 侧栏区域 -->
+          <aside class="col-md-4 hidden-sm hidden-xs">
+
+            <div class="affix-top">
+
+              <aside class="widget clearfix">
+
+                <!-- background -->
+                <div class="photo-background"></div>
+
+                <!-- 头像 -->
+                <div class="photo-wrapper">
+                  <a href="#"><img src="https://cdn.jsdelivr.net/gh/yh2233/PicGo/img/Str.png" alt="str"></a>
+                </div>
+                
+                <!-- name -->
+                <div class="textwidget">
+                  <p><a href="#">Sakura</a></p>
+                </div>
+
+              </aside>
+
+            </div>
+
+          </aside>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 底部模块 -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <p class="footer-icon">
+              <a href="#"><i class="fa fa-envelope"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-github"></i></a>
+            </p>
+            <p>© 2022 <a href="#">Sakura's Blog</a>. All Rights Reserved. | 已萌萌哒运行 276天23小时19分31秒<br>Theme <a href="#">Sakura</a> and <a href="#" class="booter-icp"><img src="https://cdn.jsdelivr.net/gh/yh2233/PicGo/img/micp.png" alt="icp">萌ICP备20212003号</a> | <a href="#">Sitemap</a> <a href="#">站长统计</a></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+</body>
 </html>
