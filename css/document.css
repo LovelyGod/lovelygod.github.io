@@ -1,0 +1,23 @@
+.documentData {
+    padding: 25px 10px 18px 10px;
+} 
+.document-header {
+    margin-bottom: 15px;
+}
+.title {
+    margin: 0 0 15px;
+    color: black;
+    font-size: 30px;
+    text-align: center;
+}
+.document-header::after {
+    content: "";
+    display: block;
+    height: 2px;
+    background-color: #51aded;
+}
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: 25px;
+    }
+}
